@@ -10,7 +10,9 @@ const Registration = () => {
     const form = new FormData(event.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(email, password);
+    const name = form.get("name");
+    const photo = form.get("photo");
+    console.log(name, photo, email, password);
     if (password.length < 6) {
       Swal.fire({
         position: "top-end",
@@ -66,9 +68,33 @@ const Registration = () => {
 
   return (
     <div className="md:w-1/2 mx-auto  ">
-      <div className="pt-[25%]">
+      <div className="pt-[10%]">
         <form onSubmit={handleLogin} className="card-body   mx-auto">
           <h2 className="text-white font-bold text-2xl">Please Registration</h2>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-white">Name</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Your Name"
+              name="name"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text text-white">Photo Url</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Photo Url"
+              name="photo"
+              className="input input-bordered"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-white">Email</span>
