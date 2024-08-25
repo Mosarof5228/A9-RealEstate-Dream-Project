@@ -12,7 +12,40 @@ const Registration = () => {
     const password = form.get("password");
     console.log(email, password);
     if (password.length < 6) {
-      alert("password at list minimum 6 digit");
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Password at list one six caracter",
+        showConfirmButton: false,
+        timer: 1200,
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Password at list one Upper case",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Password at list one smaller case",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    } else if (!/\d/.test(password)) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Password at list one Numaric case",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
     UserCreate(email, password)
@@ -23,7 +56,7 @@ const Registration = () => {
           icon: "success",
           title: "User Created Successfully",
           showConfirmButton: false,
-          timer: 1200,
+          timer: 1500,
         });
       })
       .catch((error) => {
