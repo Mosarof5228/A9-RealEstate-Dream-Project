@@ -39,27 +39,35 @@ const Navbar = () => {
             {navInfo}
           </ul>
         </div>
-        <Link to={"/"}>
-          {" "}
-          <img
-            className="w-[150px]"
-            src="/src/assets/home_logu-removebg-preview.png"
-            alt=""
-          />
-        </Link>
+        <div className="flex items-center justify-center">
+          <Link to={"/"}>
+            {" "}
+            <img
+              className="w-[100px]"
+              src="/src/assets/home_logu-removebg-preview.png"
+              alt=""
+            />
+          </Link>
+          <span className="font-bold text-2xl">Name:</span>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navInfo}</ul>
       </div>
       <div className="navbar-end gap-4 ">
-        <img
-          className="w-14 "
-          src="/src/assets/login_logo-removebg-preview.png"
-          alt=""
-        />
-        <span className="text-2xl ">Login</span>
+        <Link to={"/login"}>
+          {" "}
+          <img
+            className="w-14 "
+            src="/src/assets/login_logo-removebg-preview.png"
+            alt=""
+          />
+        </Link>
+        <span className="text-2xl ">
+          <Link to="/login">Login</Link>
+        </span>
         <button className="btn bg-[#00BBFF] outline-none border-0 text-white text-xl  px-4 ">
-          Add Property
+          Update Profile
         </button>
       </div>
     </div>
