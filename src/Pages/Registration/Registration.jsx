@@ -1,19 +1,41 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Registration = () => {
+  const { UserCreate } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
     console.log(email, password);
+    if (password.length < 6) {
+      alert("password at list minimum 6 digit");
+      return;
+    }
+    UserCreate(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Created Successfully",
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div className="md:w-1/2 mx-auto  ">
       <div className="pt-[25%]">
         <form onSubmit={handleLogin} className="card-body   mx-auto">
-          <h2 className="text-white font-bold text-2xl">Please Login!</h2>
+          <h2 className="text-white font-bold text-2xl">Please Registration</h2>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-white">Email</span>
@@ -44,7 +66,9 @@ const Registration = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn hover:bg- bg-[#00BBFF] ">
+              Registration
+            </button>
           </div>
           <div className="text-white mt-4">
             <p>
