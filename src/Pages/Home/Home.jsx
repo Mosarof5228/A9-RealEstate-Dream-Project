@@ -1,13 +1,13 @@
-import Slide from "./Slide";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Banner from "./Banner";
 
 const Home = () => {
   const { name } = useContext(AuthContext);
   return (
     <div className="">
       <h2>This is Home page</h2>
-      <Slide></Slide>
+      <Banner></Banner>
       <h2>{name}</h2>
     </div>
   );
