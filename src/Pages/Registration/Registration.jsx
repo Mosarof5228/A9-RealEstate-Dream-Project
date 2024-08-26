@@ -1,10 +1,12 @@
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Registration = () => {
-  const { UserCreate } = useContext(AuthContext);
+  const { UserCreate, user } = useContext(AuthContext);
+  console.log(user);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -52,6 +54,10 @@ const Registration = () => {
     }
     UserCreate(email, password)
       .then((result) => {
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: photo
+        })
         console.log(result.user);
         Swal.fire({
           position: "top-end",

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
-  const { logOut } = useContext(AuthContext);
+  const { logOut, user } = useContext(AuthContext);
+  console.log(user);
   const handleLogout = () => {
     logOut()
       .then(result => {
@@ -14,7 +15,6 @@ const Navbar = () => {
       })
     console.log("logout comming");
   }
-  const { user } = useContext(AuthContext);
   const navInfo = (
     <>
       <li className="text-2xl ">
@@ -28,7 +28,7 @@ const Navbar = () => {
   );
   //
   return (
-    <div className="navbar sm:px-4 lg:px-8  bg-white z-10 fixed bg-opacity-40 max-w-screen-2xl mx-auto font-bold   ">
+    <div className="navbar sm:px-4 lg:px-8  font-serif bg-white z-10 fixed bg-opacity-40 max-w-screen-2xl mx-auto font-bold   ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,15 +54,18 @@ const Navbar = () => {
             {navInfo}
           </ul>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center  justify-center">
           <Link to={"/"}>
-            {" "}
             <img
               className="w-[100px]"
               src="/src/assets/home_logu-removebg-preview.png"
               alt=""
             />
           </Link>
+          <p className="text-xl font-serif invisible md:visible underline ">
+            {user?.displayName || "Not "}
+          </p>
+
 
         </div>
       </div>
@@ -74,13 +77,15 @@ const Navbar = () => {
           U.Profile
         </button>
         {
-          user ? <div className="flex items-center justify-center"><Link>
-            <img
-              className="w-14 stroke-2"
-              src="/src/assets/login_logo-removebg-preview.png"
-              alt=""
-            />
-          </Link>
+          user ? <div className="flex items-center justify-center">
+
+
+            <div className="avatar mr-2">
+              <div className=" w-10 rounded-full ring ring-offset-2">
+                <img src={user.photoURL} alt="N.." />
+              </div>
+            </div>
+
             <span className="text-2xl ml4 ">
               <button className="text-2xl btn bg-[#00BBFF]"><Link onClick={handleLogout} >Logout</Link></button>
             </span></div> : <button className="text-2xl btn bg-[#00BBFF] ">
