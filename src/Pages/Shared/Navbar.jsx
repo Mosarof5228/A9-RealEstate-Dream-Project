@@ -18,15 +18,12 @@ const Navbar = () => {
   const navInfo = (
     <>
       <li className="text-2xl ">
-        <a>Item 1</a>
+        <Link to={"/"}>Home</Link>
+      </li>
+      <li className="text-2xl md:invisible">
+        <Link to={"#"}>Update Profile</Link>
       </li>
 
-
-
-
-      <li className="text-2xl">
-        <a>Item 3</a>
-      </li>
     </>
   );
   //
@@ -66,13 +63,16 @@ const Navbar = () => {
               alt=""
             />
           </Link>
-          <span className="font-bold text-2xl">Name:</span>
+
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navInfo}</ul>
       </div>
-      <div className="navbar-end gap-4 ">
+      <div className="navbar-end pr-2 ">
+        <button className="btn invisible md:visible mr-4 bg-[#00BBFF] outline-none border-0  text-xl  px-4 ">
+          U.Profile
+        </button>
         {
           user ? <div className="flex items-center justify-center"><Link>
             <img
@@ -81,15 +81,13 @@ const Navbar = () => {
               alt=""
             />
           </Link>
-            <span className="text-2xl ">
-              <Link onClick={handleLogout} >Logout</Link>
-            </span></div> : <span className="text-2xl ">
+            <span className="text-2xl ml4 ">
+              <button className="text-2xl btn bg-[#00BBFF]"><Link onClick={handleLogout} >Logout</Link></button>
+            </span></div> : <button className="text-2xl btn bg-[#00BBFF] ">
             <Link to="/login">Login</Link>
-          </span>
+          </button>
         }
-        <button className="btn bg-[#00BBFF] outline-none border-0  text-xl  px-4 ">
-          Update Profile
-        </button>
+
       </div>
     </div>
   );
