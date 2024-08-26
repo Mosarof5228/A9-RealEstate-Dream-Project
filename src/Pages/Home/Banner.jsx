@@ -1,6 +1,11 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+
 const Banner = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <Carousel>
       <div>

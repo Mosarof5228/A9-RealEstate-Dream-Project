@@ -1,7 +1,7 @@
+import Swal from "sweetalert2";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 
 const Registration = () => {
   const { UserCreate } = useContext(AuthContext);
@@ -68,12 +68,12 @@ const Registration = () => {
 
   return (
     <div className="md:w-1/2 mx-auto  ">
-      <div className="pt-[10%]">
-        <form onSubmit={handleLogin} className="card-body   mx-auto">
-          <h2 className="text-white font-bold text-2xl">Please Registration</h2>
+      <div className="pt-[20%]">
+        <form onSubmit={handleLogin} className="card-body shadow-2xl mt-4 border-8 border-green-50  mx-auto">
+          <h2 className=" font-bold text-2xl">Please Registration</h2>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Name</span>
+              <span className="label-text ">Name</span>
             </label>
             <input
               type="text"
@@ -85,7 +85,7 @@ const Registration = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Photo Url</span>
+              <span className="label-text ">Photo Url</span>
             </label>
             <input
               type="text"
@@ -97,7 +97,7 @@ const Registration = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Email</span>
+              <span className="label-text ">Email</span>
             </label>
             <input
               type="email"
@@ -108,8 +108,8 @@ const Registration = () => {
             />
           </div>
           <div className="form-control">
-            <label className="label text-white">
-              <span className="label-text text-white">Password</span>
+            <label className="label ">
+              <span className="label-text ">Password</span>
             </label>
             <input
               type="password"
@@ -118,8 +118,8 @@ const Registration = () => {
               className="input input-bordered"
               required
             />
-            <label className="label text-white">
-              <a href="#" className="label-text-alt link text-white link-hover">
+            <label className="label ">
+              <a href="#" className="label-text-alt link  link-hover">
                 Forgot password?
               </a>
             </label>
@@ -129,7 +129,7 @@ const Registration = () => {
               Registration
             </button>
           </div>
-          <div className="text-white mt-4">
+          <div className=" mt-4">
             <p>
               Already Have An Account Please
               <Link to="/login" className="link ml-4 link-hover">
