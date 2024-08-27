@@ -16,13 +16,18 @@ const Login = () => {
     UserLogin(email, password)
       .then((result) => {
         console.log(result.user);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "User Login Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        if (result.user.emailVerified) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Login Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          alert("Please verify first");
+          return;
+        }
       })
       .catch((error) => {
         console.log(error.message);

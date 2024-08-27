@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { updateProfile } from "firebase/auth";
+import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -11,12 +11,12 @@ const Registration = () => {
   console.log(user);
   const handleLogin = (event) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const email = form.get("email");
-    const password = form.get("password");
-    const name = form.get("name");
-    const photo = form.get("photo");
-    console.log(name, photo, email, password);
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const name = event.target.name.value;
+    const photo = event.target.photo.value;
+    const checkedd = event.target.check.checked;
+    console.log(name, photo, email, password, checkedd);
     if (password.length < 6) {
       Swal.fire({
         position: "top-end",
@@ -53,13 +53,34 @@ const Registration = () => {
         timer: 1500,
       });
       return;
+    } else if (!checkedd) {
+      alert("please checked before registration");
+      return;
     }
     UserCreate(email, password)
       .then((result) => {
+        // update profile
         updateProfile(result.user, {
           displayName: name,
           photoURL: photo,
         });
+
+        // email varification
+        sendEmailVerification(result.user)
+          .then(() => {
+            alert("Please Check your Email And verify");
+          })
+          .catch((error) => {
+            console.log(error.message);
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: "You Already used this email so use the new email",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
+
         console.log(result.user);
         Swal.fire({
           position: "top-end",
@@ -71,6 +92,13 @@ const Registration = () => {
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Already used this email",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
@@ -141,11 +169,20 @@ const Registration = () => {
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
+
             <label className="label ">
               <a href="#" className="label-text-alt link  link-hover">
                 Forgot password?
               </a>
             </label>
+          </div>
+          <div className="flex gap-2 ">
+            <input type="checkbox" name="check" id="" />
+            <span>
+              <p className="text-sm text-blue-400">
+                Please Accecpt Terms And Condition
+              </p>
+            </span>
           </div>
           <div className="form-control mt-6">
             <button className="btn hover:bg- bg-[#00BBFF] ">
