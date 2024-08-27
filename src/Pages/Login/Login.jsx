@@ -1,9 +1,11 @@
 import Swal from "sweetalert2";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const { UserLogin } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
@@ -12,7 +14,7 @@ const Login = () => {
     const password = form.get("password");
     console.log(email, password);
     UserLogin(email, password)
-      .then(result => {
+      .then((result) => {
         console.log(result.user);
         Swal.fire({
           position: "top-end",
@@ -22,7 +24,7 @@ const Login = () => {
           timer: 1500,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
         Swal.fire({
           position: "top-end",
@@ -31,14 +33,19 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-      })
+      });
+  };
 
-
+  const handleEyePassword = () => {
+    setShowPassword(!showPassword);
   };
   return (
     <div className="md:w-1/2 mx-auto  ">
       <div className="pt-[25%]">
-        <form onSubmit={handleLogin} className="card-body border-8 border-green-50  shadow-2xl  mx-auto">
+        <form
+          onSubmit={handleLogin}
+          className="card-body border-8 border-green-50  shadow-2xl  mx-auto"
+        >
           <h2 className=" font-bold text-2xl">Please Login!</h2>
           <div className="form-control">
             <label className="label">
@@ -56,13 +63,21 @@ const Login = () => {
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              className="input input-bordered"
-              required
-            />
+            <div className="flex items-center justify-end">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="password"
+                className="input input-bordered w-full"
+                required
+              />
+              <span
+                onClick={handleEyePassword}
+                className="absolute mr-4 text-2xl"
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </span>
+            </div>
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
