@@ -82,7 +82,7 @@ const Navbar = () => {
 
             <div className="avatar mr-2">
               <div className=" w-10 rounded-full ring ring-offset-2">
-                <img src={user.photoURL} alt="N.." />
+                <img className="" src={user.photoURL} alt="N.." />
               </div>
             </div>
 
