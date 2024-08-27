@@ -1,10 +1,12 @@
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const { UserCreate, user } = useContext(AuthContext);
   console.log(user);
   const handleLogin = (event) => {
@@ -56,8 +58,8 @@ const Registration = () => {
       .then((result) => {
         updateProfile(result.user, {
           displayName: name,
-          photoURL: photo
-        })
+          photoURL: photo,
+        });
         console.log(result.user);
         Swal.fire({
           position: "top-end",
@@ -72,10 +74,17 @@ const Registration = () => {
       });
   };
 
+  const handleEyePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="md:w-1/2 mx-auto  ">
       <div className="pt-[20%]">
-        <form onSubmit={handleLogin} className="card-body shadow-2xl mt-4 border-8 border-green-50  mx-auto">
+        <form
+          onSubmit={handleLogin}
+          className="card-body shadow-2xl mt-4 border-8 border-green-50  mx-auto"
+        >
           <h2 className=" font-bold text-2xl">Please Registration</h2>
           <div className="form-control">
             <label className="label">
@@ -117,13 +126,21 @@ const Registration = () => {
             <label className="label ">
               <span className="label-text ">Password</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              className="input input-bordered"
-              required
-            />
+            <div className="flex justify-end items-center ">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="password"
+                className=" w-full input input-bordered"
+                required
+              />
+              <span
+                onClick={handleEyePassword}
+                className=" text-3xl absolute mr-4 "
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </span>
+            </div>
             <label className="label ">
               <a href="#" className="label-text-alt link  link-hover">
                 Forgot password?
