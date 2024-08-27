@@ -1,0 +1,59 @@
+[
+    {
+        "id": "0",
+        "name": "Modern Penthouse",
+        "description": "A stunning penthouse with panoramic city views and state-of-the-art amenities.",
+        "price": "$2,500,000",
+        "status": "sale",
+        "area": "4000 sq ft",
+        "location": "Los Angeles, CA",
+        "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Roof Terrace", "Private Elevator"],
+        "image": "image1.jpg"
+    },
+    {
+        "id": "1",
+        "name": "Country Cottage",
+        "description": "A charming cottage nestled in the countryside, perfect for a peaceful retreat.",
+        "price": "$350,000",
+        "status": "sale",
+        "area": "1800 sq ft",
+        "location": "Nashville, TN",
+        "facilities": ["Living Room", "Garden", "Kitchen", "Fireplace", "Workshop"],
+        "image": "image2.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Urban Loft",
+        "description": "A chic loft in the heart of downtown, featuring exposed brick and modern finishes.",
+        "price": "$1,200,000",
+        "status": "sale",
+        "area": "2200 sq ft",
+        "location": "Chicago, IL",
+        "facilities": ["Living Room", "Kitchen", "Gym", "Rooftop Access", "Office Space"],
+        "image": "image3.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Seaside Villa",
+        "description": "A luxurious villa with direct beach access and breathtaking ocean views.",
+        "price": "$3,800,000",
+        "status": "rent",
+        "area": "3500 sq ft",
+        "location": "Malibu, CA",
+        "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Private Beach", "Outdoor Lounge"],
+        "image": "image4.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Mountain Cabin",
+        "description": "A cozy cabin in the mountains, perfect for a winter getaway or summer hiking.",
+        "price": "$500,000",
+        "status": "sale",
+        "area": "1600 sq ft",
+        "location": "Aspen, CO",
+        "facilities": ["Living Room", "Fireplace", "Kitchen", "Deck", "Hot Tub"],
+        "image": "image5.jpg"
+    }
+]
+
+
