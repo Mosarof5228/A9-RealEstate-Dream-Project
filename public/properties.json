@@ -8,7 +8,7 @@
         "area": "4000 sq ft",
         "location": "Los Angeles, CA",
         "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Roof Terrace", "Private Elevator"],
-        "image": "image1.jpg"
+        "image": "https://i.ibb.co/H25ZHML/2.jpg"
     },
     {
         "id": "1",
@@ -19,7 +19,7 @@
         "area": "1800 sq ft",
         "location": "Nashville, TN",
         "facilities": ["Living Room", "Garden", "Kitchen", "Fireplace", "Workshop"],
-        "image": "image2.jpg"
+        "image": "https://i.ibb.co/zRPjKk3/12.jpg"
     },
     {
         "id": "2",
@@ -30,7 +30,7 @@
         "area": "2200 sq ft",
         "location": "Chicago, IL",
         "facilities": ["Living Room", "Kitchen", "Gym", "Rooftop Access", "Office Space"],
-        "image": "image3.jpg"
+        "image": "https://i.ibb.co/pnzKF5g/58.jpg"
     },
     {
         "id": "3",
@@ -41,7 +41,7 @@
         "area": "3500 sq ft",
         "location": "Malibu, CA",
         "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Private Beach", "Outdoor Lounge"],
-        "image": "image4.jpg"
+        "image": "https://i.ibb.co/CbNtVp7/56.jpg"
     },
     {
         "id": "4",
@@ -52,7 +52,7 @@
         "area": "1600 sq ft",
         "location": "Aspen, CO",
         "facilities": ["Living Room", "Fireplace", "Kitchen", "Deck", "Hot Tub"],
-        "image": "image5.jpg"
+        "image": "https://i.ibb.co/wwhNkWB/11.jpg"
     }
 ]
 
