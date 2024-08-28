@@ -7,7 +7,7 @@ const PropertyCard = ({ property }) => {
       <div className="card card-compact bg-base-100  shadow-xl">
         <figure>
           <img
-            className="object-cover h-56 w-full"
+            className=" transition-transform duration-500 ease-in-out transform hover:scale-150 object-cover h-56 w-full"
             src={image}
             alt="Property Photo"
           />
