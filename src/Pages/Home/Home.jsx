@@ -22,7 +22,12 @@ const Home = () => {
       <Banner></Banner>
 
       <div className="">
-        <div className="text-center justify-center mx-auto w-[45%]">
+        <div
+          data-aos="fade-right"
+          data-aos-offset="200"
+          data-aos-mirror="true"
+          className="text-center justify-center mx-auto w-[45%]"
+        >
           <h2 className="font-semibold text-4xl py-2">Best Offer for Rent</h2>
           <p className="pb-8">
             Residences can be classified by, if, and how they are connected to

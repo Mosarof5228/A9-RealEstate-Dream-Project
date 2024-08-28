@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const PropertyCard = ({ property }) => {
-  const { name, status, image } = property;
+  const { name, status, image, id } = property;
 
   return (
     <div className="">
@@ -16,7 +17,12 @@ const PropertyCard = ({ property }) => {
           <h2 className="card-title font-bold ">Tittle: {name}</h2>
           <div className="badge  badge-outline">{status}</div>
           <div className="card-actions my-4 justify-end">
-            <button className="btn w-full   bg-[#00BBFF]">View Details</button>
+            <Link
+              to={`/propertyDetails/${id}`}
+              className="btn w-full   bg-[#00BBFF]"
+            >
+              View Details
+            </Link>
           </div>
         </div>
       </div>
