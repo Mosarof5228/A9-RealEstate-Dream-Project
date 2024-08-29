@@ -3,6 +3,7 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
+import PropertyDetails from "../Pages/Home/PropertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,12 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () => fetch("properties.json"),
+      },
+      {
+        path: "/propertyDetails/:id",
+        element: <PropertyDetails></PropertyDetails>,
+
+        // loader:({params})=>{``}
       },
       {
         path: "/login",
