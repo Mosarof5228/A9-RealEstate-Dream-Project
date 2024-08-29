@@ -17,10 +17,7 @@ const PropertyCard = ({ property }) => {
           <h2 className="card-title font-bold ">Tittle: {name}</h2>
           <div className="badge  badge-outline">{status}</div>
           <div className="card-actions my-4 justify-end">
-            <Link
-              to={`/propertyDetails/${id}`}
-              className="btn w-full   bg-[#00BBFF]"
-            >
+            <Link to={"/propertyDetails"} className="btn w-full   bg-[#00BBFF]">
               View Details
             </Link>
           </div>

@@ -1,6 +1,6 @@
 const PropertyDetails = () => {
   return (
-    <div>
+    <div className="pt-[25%]">
       <h2>this is property details</h2>
     </div>
   );
