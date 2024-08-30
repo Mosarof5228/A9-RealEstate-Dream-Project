@@ -1,3 +1,4 @@
+import logo from "/src/assets/home_logu-removebg-preview.png";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -58,7 +59,7 @@ const Navbar = () => {
           <Link to={"/"}>
             <img
               className="w-[100px]"
-              src="/src/assets/home_logu-removebg-preview.png"
+              src={logo}
               alt=""
             />
           </Link>
