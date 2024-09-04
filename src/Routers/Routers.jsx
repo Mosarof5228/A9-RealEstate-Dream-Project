@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import PropertyDetails from "../Pages/Home/PropertyDetails";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Users from "../Pages/Users/Users";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () => fetch("properties.json"),
+      },
+      {
+        path: "/users",
+        element: <Users></Users>,
       },
       {
         path: "/propertyDetails",
