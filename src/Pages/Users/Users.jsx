@@ -1,15 +1,10 @@
-import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      });
-  }, []);
+  const loadedUsers = useLoaderData();
+  const [users, setUsers] = useState(loadedUsers);
+
   console.log(users);
   const handleAddUser = (event) => {
     event.preventDefault();
@@ -30,11 +25,30 @@ const Users = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.insertedId) {
+          alert("Stored to database successfully");
+        }
         console.log(data);
-        const newUsers = [...users, data];
-        setUsers(newUsers);
-        form.reset();
       });
+  };
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:5000/users/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          alert("Deleted Successfully");
+          const remainingUsers = users.filter((user) => user._id !== _id);
+          setUsers(remainingUsers);
+        }
+      });
+    console.log("coming>>>>", _id);
+  };
+
+  const handleUpdate = () => {
+    console.log("coming update");
   };
   return (
     <div className="pt-[10%]">
@@ -75,7 +89,21 @@ const Users = () => {
       <div className="text-justify flex flex-col  ">
         {users.map((user) => (
           <p key={user.id}>
-            Id : {user.id} {user.name} {user.gmail}
+            Id : {user._id} {user.name} {user.email}
+            <Link to={`/update/${user._id}`}>
+              <button
+                onClick={handleUpdate}
+                className="btn btn-sm btn-primary mx-2"
+              >
+                Update
+              </button>
+            </Link>
+            <button
+              onClick={() => handleDelete(user._id)}
+              className="btn btn-error btn-sm my-2"
+            >
+              Delete
+            </button>
           </p>
         ))}
       </div>
