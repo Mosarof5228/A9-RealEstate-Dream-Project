@@ -8,23 +8,25 @@ const Navbar = () => {
   console.log(user);
   const handleLogout = () => {
     logOut()
-      .then(result => {
-        console.log("log out successfully", result.user,)
+      .then((result) => {
+        console.log("log out successfully", result.user);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.message);
-      })
+      });
     console.log("logout comming");
-  }
+  };
   const navInfo = (
     <>
       <li className="text-2xl ">
         <Link to={"/"}>Home</Link>
       </li>
+      <li className="text-2xl ">
+        <Link to={"/users"}>Users</Link>
+      </li>
       <li className="text-2xl md:invisible">
         <Link to={"#"}>Update Profile</Link>
       </li>
-
     </>
   );
   //
@@ -66,8 +68,6 @@ const Navbar = () => {
           <p className="text-xl font-serif invisible md:visible underline ">
             {user?.displayName || "Not "}
           </p>
-
-
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -77,10 +77,8 @@ const Navbar = () => {
         <button className="btn invisible md:visible mr-4 bg-[#00BBFF] outline-none border-0  text-xl  px-4 ">
           U.Profile
         </button>
-        {
-          user ? <div className="flex items-center justify-center">
-
-
+        {user ? (
+          <div className="flex items-center justify-center">
             <div className="avatar mr-2">
               <div className=" w-10 rounded-full ring ring-offset-2">
                 <img className="" src={user.photoURL} alt="N.." />
@@ -88,12 +86,16 @@ const Navbar = () => {
             </div>
 
             <span className="text-2xl ml4 ">
-              <button className="text-2xl btn bg-[#00BBFF]"><Link onClick={handleLogout} >Logout</Link></button>
-            </span></div> : <button className="text-2xl btn bg-[#00BBFF] ">
+              <button className="text-2xl btn bg-[#00BBFF]">
+                <Link onClick={handleLogout}>Logout</Link>
+              </button>
+            </span>
+          </div>
+        ) : (
+          <button className="text-2xl btn bg-[#00BBFF] ">
             <Link to="/login">Login</Link>
           </button>
-        }
-
+        )}
       </div>
     </div>
   );
