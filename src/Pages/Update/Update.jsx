@@ -23,7 +23,7 @@ const Update = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          alert("modify Successfully");
+          alert("modify Successfullyyyy");
         }
       });
   };
